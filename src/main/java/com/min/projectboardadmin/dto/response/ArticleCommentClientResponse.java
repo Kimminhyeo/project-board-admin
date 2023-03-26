@@ -1,8 +1,7 @@
 package com.min.projectboardadmin.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.min.projectboardadmin.dto.ArticleDto;
-import com.min.projectboardadmin.dto.security.ArticleCommentDto;
+import com.min.projectboardadmin.dto.ArticleCommentDto;
 import lombok.Getter;
 
 import java.util.List;

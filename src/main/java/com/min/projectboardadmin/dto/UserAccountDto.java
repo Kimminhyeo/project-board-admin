@@ -11,7 +11,6 @@ import java.util.Set;
 @Setter
 public class UserAccountDto {
     private String userId;
-    Set<RoleType> roleTypes;
     private String email;
     private String nickname;
     private String memo;
@@ -23,7 +22,6 @@ public class UserAccountDto {
     protected UserAccountDto(){}
     private UserAccountDto(
                            String userId,
-                           Set<RoleType> roleTypes,
                            String email,
                            String nickname,
                            String memo,
@@ -32,7 +30,6 @@ public class UserAccountDto {
                            LocalDateTime modifiedAt,
                            String modifiedBy) {
         this.userId = userId;
-        this.roleTypes = roleTypes;
         this.email = email;
         this.nickname = nickname;
         this.memo = memo;
@@ -43,15 +40,13 @@ public class UserAccountDto {
     }
     public static UserAccountDto of(
                                     String userId,
-                                    Set<RoleType> roleTypes,
                                     String email,
                                     String nickname,
                                     String memo) {
-        return UserAccountDto.of(userId, roleTypes, email, nickname, memo, null, null, null, null);
+        return UserAccountDto.of(userId, email, nickname, memo, null, null, null, null);
     }
     public static UserAccountDto of(
                                     String userId,
-                                    Set<RoleType> roleTypes,
                                     String email,
                                     String nickname,
                                     String memo,
@@ -59,6 +54,6 @@ public class UserAccountDto {
                                     String createdBy,
                                     LocalDateTime modifiedAt,
                                     String modifiedBy) {
-        return new UserAccountDto(userId, roleTypes, email, nickname, memo, createdAt, createdBy, modifiedAt, modifiedBy);
+        return new UserAccountDto(userId, email, nickname, memo, createdAt, createdBy, modifiedAt, modifiedBy);
     }
 }

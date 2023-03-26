@@ -1,15 +1,15 @@
 package com.min.projectboardadmin.dto.properties;
 
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 @Getter
-@ConfigurationProperties("project")
+@Component
 public class ProjectProperties {
 
-    Board board;
-
-    public ProjectProperties(Board board) {
-        this.board = board;
-    }
+    @Value("${project.board.url}")
+    String url;
 }

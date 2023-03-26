@@ -1,7 +1,7 @@
 package com.min.projectboardadmin.dto.security;
 
 import com.min.projectboardadmin.domain.constant.RoleType;
-import com.min.projectboardadmin.dto.UserAccountDto;
+import com.min.projectboardadmin.dto.AdminAccountDto;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,7 +9,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-import javax.management.relation.Role;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -58,7 +57,7 @@ public class BoardAdminPrincipal implements UserDetails, OAuth2User {
                 oAuth2Attributes);
     }
 
-    public static BoardAdminPrincipal from(UserAccountDto dto){
+    public static BoardAdminPrincipal from(AdminAccountDto dto){
         return BoardAdminPrincipal.of(
                 dto.getUserId(),
                 dto.getUserPassword(),
@@ -69,8 +68,8 @@ public class BoardAdminPrincipal implements UserDetails, OAuth2User {
         );
     }
 
-    public UserAccountDto toDto(){
-        return UserAccountDto.of(
+    public AdminAccountDto toDto(){
+        return AdminAccountDto.of(
                 username,
                 password,
                 authorities.stream()

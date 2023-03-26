@@ -90,7 +90,7 @@ class ArticleManagementServiceTest {
             ArticleDto expectedArticle = createArticleDto("제목", "글");
             ArticleClientResponse expectedResponse = ArticleClientResponse.of(List.of(expectedArticle));
             server
-                    .expect(requestTo(projectProperties.getBoard().getUrl()+ "/api/articles?size=10000"))
+                    .expect(requestTo(projectProperties.getUrl()+ "/api/articles?size=10000"))
                     .andRespond(withSuccess(
                             mapper.writeValueAsString(expectedResponse),
                             MediaType.APPLICATION_JSON
@@ -115,7 +115,7 @@ class ArticleManagementServiceTest {
             Long articleId = 1L;
             ArticleDto expectedArticle = createArticleDto("게시판", "글");
             server
-                    .expect(requestTo(projectProperties.getBoard().getUrl() + "/api/articles/" + articleId))
+                    .expect(requestTo(projectProperties.getUrl() + "/api/articles/" + articleId))
                     .andRespond(withSuccess(
                             mapper.writeValueAsString(expectedArticle),
                             MediaType.APPLICATION_JSON
@@ -139,7 +139,7 @@ class ArticleManagementServiceTest {
             // Given
             Long articleId = 1L;
             server
-                    .expect(requestTo(projectProperties.getBoard().getUrl() + "/api/articles/" + articleId))
+                    .expect(requestTo(projectProperties.getUrl() + "/api/articles/" + articleId))
                     .andExpect(method(HttpMethod.DELETE))
                     .andRespond(withSuccess());
 
@@ -168,7 +168,6 @@ class ArticleManagementServiceTest {
         private UserAccountDto createUserAccountDto() {
             return UserAccountDto.of(
                     "unoTest",
-                    "pw",
                     Set.of(RoleType.ADMIN),
                     "uno-test@email.com",
                     "uno-test",

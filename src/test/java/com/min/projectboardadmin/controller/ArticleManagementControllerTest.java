@@ -1,6 +1,7 @@
 package com.min.projectboardadmin.controller;
 
 import com.min.projectboardadmin.config.SecurityConfig;
+import com.min.projectboardadmin.config.TestSecurityConfig;
 import com.min.projectboardadmin.domain.constant.RoleType;
 import com.min.projectboardadmin.dto.ArticleDto;
 import com.min.projectboardadmin.dto.UserAccountDto;
@@ -25,7 +26,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @DisplayName("컨트롤러 - 게시글 관리")
-@Import(SecurityConfig.class)
+@Import(TestSecurityConfig.class)
 @WebMvcTest(ArticleManagementController.class)
 class ArticleManagementControllerTest {
 

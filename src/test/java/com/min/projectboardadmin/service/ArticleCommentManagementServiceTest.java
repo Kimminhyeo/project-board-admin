@@ -1,13 +1,10 @@
 package com.min.projectboardadmin.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.min.projectboardadmin.domain.constant.RoleType;
-import com.min.projectboardadmin.dto.ArticleDto;
 import com.min.projectboardadmin.dto.UserAccountDto;
 import com.min.projectboardadmin.dto.properties.ProjectProperties;
-import com.min.projectboardadmin.dto.response.ArticleClientResponse;
 import com.min.projectboardadmin.dto.response.ArticleCommentClientResponse;
-import com.min.projectboardadmin.dto.security.ArticleCommentDto;
+import com.min.projectboardadmin.dto.ArticleCommentDto;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -24,10 +21,8 @@ import org.springframework.test.web.client.MockRestServiceServer;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;

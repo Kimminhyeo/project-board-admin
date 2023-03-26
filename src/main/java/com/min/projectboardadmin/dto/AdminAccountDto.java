@@ -1,5 +1,6 @@
 package com.min.projectboardadmin.dto;
 
+import com.min.projectboardadmin.domain.AdminAccount;
 import com.min.projectboardadmin.domain.constant.RoleType;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,8 +10,9 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class UserAccountDto {
+public class AdminAccountDto {
     private String userId;
+    private String userPassword;
     Set<RoleType> roleTypes;
     private String email;
     private String nickname;
@@ -20,9 +22,10 @@ public class UserAccountDto {
     private LocalDateTime modifiedAt;
     private String modifiedBy;
 
-    protected UserAccountDto(){}
-    private UserAccountDto(
+    protected AdminAccountDto(){}
+    private AdminAccountDto(
                            String userId,
+                           String userPassword,
                            Set<RoleType> roleTypes,
                            String email,
                            String nickname,
@@ -32,6 +35,7 @@ public class UserAccountDto {
                            LocalDateTime modifiedAt,
                            String modifiedBy) {
         this.userId = userId;
+        this.userPassword = userPassword;
         this.roleTypes = roleTypes;
         this.email = email;
         this.nickname = nickname;
@@ -41,16 +45,18 @@ public class UserAccountDto {
         this.modifiedAt = modifiedAt;
         this.modifiedBy = modifiedBy;
     }
-    public static UserAccountDto of(
+    public static AdminAccountDto of(
                                     String userId,
+                                    String userPassword,
                                     Set<RoleType> roleTypes,
                                     String email,
                                     String nickname,
                                     String memo) {
-        return UserAccountDto.of(userId, roleTypes, email, nickname, memo, null, null, null, null);
+        return AdminAccountDto.of(userId, userPassword, roleTypes, email, nickname, memo, null, null, null, null);
     }
-    public static UserAccountDto of(
+    public static AdminAccountDto of(
                                     String userId,
+                                    String userPassword,
                                     Set<RoleType> roleTypes,
                                     String email,
                                     String nickname,
@@ -59,6 +65,32 @@ public class UserAccountDto {
                                     String createdBy,
                                     LocalDateTime modifiedAt,
                                     String modifiedBy) {
-        return new UserAccountDto(userId, roleTypes, email, nickname, memo, createdAt, createdBy, modifiedAt, modifiedBy);
+        return new AdminAccountDto(userId, userPassword, roleTypes, email, nickname, memo, createdAt, createdBy, modifiedAt, modifiedBy);
+    }
+
+    public static AdminAccountDto from(AdminAccount entity) {
+        return new AdminAccountDto(
+                entity.getUserId(),
+                entity.getUserPassword(),
+                entity.getRoleTypes(),
+                entity.getEmail(),
+                entity.getNickname(),
+                entity.getMemo(),
+                entity.getCreatedAt(),
+                entity.getCreatedBy(),
+                entity.getModifiedAt(),
+                entity.getModifiedBy()
+        );
+    }
+
+    public AdminAccount toEntity() {
+        return AdminAccount.of(
+                userId,
+                userPassword,
+                roleTypes,
+                email,
+                nickname,
+                memo
+        );
     }
 }

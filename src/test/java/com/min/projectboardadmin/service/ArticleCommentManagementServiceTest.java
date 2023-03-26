@@ -96,7 +96,7 @@ class ArticleCommentManagementServiceTest {
             ArticleCommentDto expectedComment = createArticleCommentDto("댓글");
             ArticleCommentClientResponse expectedResponse = ArticleCommentClientResponse.of(List.of(expectedComment));
             server
-                    .expect(requestTo(projectProperties.getBoard().getUrl() + "/api/articleComments?size=10000"))
+                    .expect(requestTo(projectProperties.getUrl() + "/api/articleComments?size=10000"))
                     .andRespond(withSuccess(
                             mapper.writeValueAsString(expectedResponse),
                             MediaType.APPLICATION_JSON
@@ -121,7 +121,7 @@ class ArticleCommentManagementServiceTest {
             Long articleCommentId = 1L;
             ArticleCommentDto expectedComment = createArticleCommentDto("댓글");
             server
-                    .expect(requestTo(projectProperties.getBoard().getUrl() + "/api/articleComments/" + articleCommentId))
+                    .expect(requestTo(projectProperties.getUrl() + "/api/articleComments/" + articleCommentId))
                     .andRespond(withSuccess(
                             mapper.writeValueAsString(expectedComment),
                             MediaType.APPLICATION_JSON
@@ -145,7 +145,7 @@ class ArticleCommentManagementServiceTest {
             // Given
             Long articleCommentId = 1L;
             server
-                    .expect(requestTo(projectProperties.getBoard().getUrl() + "/api/articleComments/" + articleCommentId))
+                    .expect(requestTo(projectProperties.getUrl() + "/api/articleComments/" + articleCommentId))
                     .andExpect(method(HttpMethod.DELETE))
                     .andRespond(withSuccess());
 
@@ -175,7 +175,6 @@ class ArticleCommentManagementServiceTest {
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
                 "unoTest",
-                "pw",
                 Set.of(RoleType.ADMIN),
                 "uno-test@email.com",
                 "uno-test",

@@ -1,6 +1,6 @@
 package com.min.projectboardadmin.service;
 
-import com.min.projectboardadmin.dto.security.ArticleCommentDto;
+import com.min.projectboardadmin.dto.ArticleCommentDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

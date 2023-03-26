@@ -1,6 +1,5 @@
-package com.min.projectboardadmin.dto.security;
+package com.min.projectboardadmin.dto;
 
-import com.min.projectboardadmin.dto.UserAccountDto;
 import lombok.Getter;
 
 import java.time.LocalDateTime;

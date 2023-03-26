@@ -1,9 +1,9 @@
 package com.min.projectboardadmin.controller;
 
 import com.min.projectboardadmin.config.SecurityConfig;
-import com.min.projectboardadmin.domain.constant.RoleType;
+import com.min.projectboardadmin.config.TestSecurityConfig;
 import com.min.projectboardadmin.dto.UserAccountDto;
-import com.min.projectboardadmin.dto.security.ArticleCommentDto;
+import com.min.projectboardadmin.dto.ArticleCommentDto;
 import com.min.projectboardadmin.service.ArticleCommentManagementService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 import static org.mockito.BDDMockito.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -25,7 +24,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @DisplayName("View 컨트롤러 - 댓글 관리")
-@Import(SecurityConfig.class)
+@Import(TestSecurityConfig.class)
 @WebMvcTest(ArticleCommentManagementController.class)
 class ArticleCommentManagementControllerTest {
 

@@ -17,7 +17,7 @@ public class ArticleResponse {
 
     private ArticleResponse(){}
 
-    public ArticleResponse(Long id, UserAccountDto userAccount, String title, String content, LocalDateTime createdAt) {
+    protected ArticleResponse(Long id, UserAccountDto userAccount, String title, String content, LocalDateTime createdAt) {
         this.id = id;
         this.userAccount = userAccount;
         this.title = title;

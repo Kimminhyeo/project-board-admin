@@ -42,6 +42,9 @@ public class ArticleCommentClientResponse {
 class Embedded2 {
     List<ArticleCommentDto> articleComments;
 
+    public Embedded2() {
+    }
+
     public Embedded2(List<ArticleCommentDto> articleComments) {
         this.articleComments = articleComments;
     }
@@ -53,6 +56,9 @@ class Page2{
     long totalElements;
     int totalPages;
     int number;
+
+    public Page2() {
+    }
 
     public Page2(int size, long totalElements, int totalPages, int number) {
         this.size = size;

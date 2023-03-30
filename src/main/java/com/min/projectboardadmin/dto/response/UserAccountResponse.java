@@ -1,9 +1,13 @@
 package com.min.projectboardadmin.dto.response;
 
 import com.min.projectboardadmin.dto.UserAccountDto;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+@Setter
+@Getter
 public class UserAccountResponse {
 
     String userId;

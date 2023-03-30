@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Getter
-@Component
+@ConfigurationProperties("project")
 public class ProjectProperties {
 
     @Value("${project.board.url}")

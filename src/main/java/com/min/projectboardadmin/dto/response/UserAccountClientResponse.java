@@ -41,6 +41,9 @@ public class UserAccountClientResponse {
 class Embedded3 {
     List<UserAccountDto> userAccounts;
 
+    public Embedded3() {
+    }
+
     public Embedded3(List<UserAccountDto> userAccounts) {
         this.userAccounts = userAccounts;
     }
@@ -52,6 +55,9 @@ class Page3{
     long totalElements;
     int totalPages;
     int number;
+
+    public Page3() {
+    }
 
     public Page3(int size, long totalElements, int totalPages, int number) {
         this.size = size;

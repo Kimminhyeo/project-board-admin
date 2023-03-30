@@ -3,9 +3,13 @@ package com.min.projectboardadmin.dto.response;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.min.projectboardadmin.dto.ArticleDto;
 import com.min.projectboardadmin.dto.UserAccountDto;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+@Setter
+@Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ArticleResponse {
 

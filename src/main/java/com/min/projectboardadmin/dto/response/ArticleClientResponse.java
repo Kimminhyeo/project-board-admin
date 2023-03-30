@@ -42,6 +42,9 @@ public class ArticleClientResponse {
 class Embedded {
     List<ArticleDto> articles;
 
+    public Embedded() {
+    }
+
     public Embedded(List<ArticleDto> articles) {
         this.articles = articles;
     }
@@ -53,6 +56,9 @@ class Page{
     long totalElements;
     int totalPages;
     int number;
+
+    public Page() {
+    }
 
     public Page(int size, long totalElements, int totalPages, int number) {
         this.size = size;

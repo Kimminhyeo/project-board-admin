@@ -2,10 +2,14 @@ package com.min.projectboardadmin.dto.response;
 
 import com.min.projectboardadmin.domain.constant.RoleType;
 import com.min.projectboardadmin.dto.AdminAccountDto;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
+@Setter
+@Getter
 public class AdminAccountResponse {
 
     String userId;

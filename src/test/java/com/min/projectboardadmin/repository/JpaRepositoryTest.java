@@ -31,15 +31,16 @@ class JpaRepositoryTest {
 
     @DisplayName("회원 정보 select 테스트")
     @Test
-    void givenAdminAccount_whenSelecting_thenWorksFine(){
+    void givenAdminAccounts_whenSelecting_thenWorksFine() {
         // Given
 
-
-        // WHEN
+        // When
         List<AdminAccount> adminAccounts = adminAccountRepository.findAll();
 
         // Then
-        assertThat(adminAccounts).isNotNull().hasSize(4);
+        assertThat(adminAccounts)
+                .isNotNull()
+                .hasSize(4);
     }
 
     @DisplayName("회원 정보 insert 테스트")
@@ -97,4 +98,5 @@ class JpaRepositoryTest {
             return () -> Optional.of("uno");
         }
     }
+
 }

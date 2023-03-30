@@ -35,39 +35,39 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 @DisplayName("비즈니스 로직 - 게시글 관리")
 class ArticleManagementServiceTest {
 
+    @Disabled("실제 API 호출 결과 관찰용이므로 평상시엔 비활성화")
+    @DisplayName("실제 API 호출 테스트")
+    @SpringBootTest
+    @Nested
+    class RealApiTest {
+
+        private final ArticleManagementService sut;
+
+        @Autowired
+        public RealApiTest(ArticleManagementService sut) {
+            this.sut = sut;
+        }
+
+        @DisplayName("게시글 API를 호출하면, 게시글을 가져온다.")
+        @Test
+        void givenNothing_whenCallingArticleApi_thenReturnsArticleList() {
+            // Given
+
+            // When
+            List<ArticleDto> result = sut.getArticles();
+
+            // Then
+            System.out.println(result.stream().findFirst());
+            assertThat(result).isNotNull();
+        }
+    }
+
     @DisplayName("API mocking 테스트")
     @EnableConfigurationProperties(ProjectProperties.class)
     @AutoConfigureWebClient(registerRestTemplate = true)
     @RestClientTest(ArticleManagementService.class)
-    class RestTemplateTest{
-
-        // @Disabled("실제 API 호출 결과 관찰용이므로 평상시엔 비활성화")
-        @Disabled
-        @DisplayName("실제 API 호출 테스트")
-        @SpringBootTest
-        @Nested
-        class RealApiTest {
-
-            private final ArticleManagementService sut;
-
-            @Autowired
-            public RealApiTest(ArticleManagementService sut) {
-                this.sut = sut;
-            }
-
-            @DisplayName("게시글 API를 호출하면, 게시글을 가져온다.")
-            @Test
-            void givenNothing_whenCallingArticleApi_thenReturnArticleList() {
-                // Given
-
-                // When
-                List<ArticleDto> result = sut.getArticles();
-
-                // Then
-                System.out.println(result.stream().findFirst());
-                assertThat(result).isNotNull();
-            }
-        }
+    @Nested
+    class RestTemplateTest {
 
         private final ArticleManagementService sut;
 
@@ -76,7 +76,12 @@ class ArticleManagementServiceTest {
         private final ObjectMapper mapper;
 
         @Autowired
-        public RestTemplateTest(ArticleManagementService sut, ProjectProperties projectProperties, MockRestServiceServer server, ObjectMapper mapper) {
+        public RestTemplateTest(
+                ArticleManagementService sut,
+                ProjectProperties projectProperties,
+                MockRestServiceServer server,
+                ObjectMapper mapper
+        ) {
             this.sut = sut;
             this.projectProperties = projectProperties;
             this.server = server;
@@ -90,7 +95,7 @@ class ArticleManagementServiceTest {
             ArticleDto expectedArticle = createArticleDto("제목", "글");
             ArticleClientResponse expectedResponse = ArticleClientResponse.of(List.of(expectedArticle));
             server
-                    .expect(requestTo(projectProperties.getUrl()+ "/api/articles?size=10000"))
+                    .expect(requestTo(projectProperties.getUrl() + "/api/articles?size=10000"))
                     .andRespond(withSuccess(
                             mapper.writeValueAsString(expectedResponse),
                             MediaType.APPLICATION_JSON
@@ -108,7 +113,7 @@ class ArticleManagementServiceTest {
             server.verify();
         }
 
-        @DisplayName("게시글 ID와 함께 게시글 API를 호출하면, 게시글을 가져온다.")
+        @DisplayName("게시글 ID와 함께 게시글 API을 호출하면, 게시글을 가져온다.")
         @Test
         void givenArticleId_whenCallingArticleApi_thenReturnsArticle() throws Exception {
             // Given
@@ -174,4 +179,5 @@ class ArticleManagementServiceTest {
             );
         }
     }
+
 }
